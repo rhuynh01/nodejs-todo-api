@@ -35,12 +35,11 @@ app.get('/todos/:id', (req, res) => {
   var id = req.params.id
 
   // Valid id using isValid
-    // 404 - send back empty send
   if (!ObjectID.isValid(id)) {
     return res.status(404).send()
   }
 
-  // findById
+  // findById   5c65cf5a657819dc0db5d9e1
   Todo.findById(id).then((todo) => {
     if (!todo) {
       return res.status(404).send()
@@ -49,13 +48,6 @@ app.get('/todos/:id', (req, res) => {
   }).catch((e) => {
     res.status(400).send()
   })
-    // success
-      // if todo - send it back
-
-      // if no todo - send back 404 with empty body
-
-    // error
-      // 400 - and send empty body back
 })
 
 app.listen(3000, () => {
